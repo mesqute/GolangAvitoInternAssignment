@@ -15,13 +15,15 @@ func main() {
 	//считывание флагов из командной строки
 	flag.Parse()
 
-	mux := http.NewServeMux()
-	mux.HandleFunc("/updatecash", updateCashHandler)
-	mux.HandleFunc("/transfercash", transferCashHandler)
-	mux.HandleFunc("/getcurrentcash", getCurrentCashHandler)
+	//обявление указателя структуры "сервер", содержащей данные о сетевом адресе и маршрутах
+	srv := &http.Server{
+		Addr:    *addr,
+		Handler: routes(),
+	}
 
+	// запуск HTTP-сервера
 	log.Printf("Запуск сервера на %s", *addr)
-	err := http.ListenAndServe(*addr, mux)
+	err := srv.ListenAndServe()
 	if err != nil {
 		log.Fatal(err)
 	}
