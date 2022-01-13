@@ -4,9 +4,9 @@ import "net/http"
 
 func routes() *http.ServeMux {
 	mux := http.NewServeMux()
-	mux.HandleFunc("/updatecash", updateCashHandler)
-	mux.HandleFunc("/transfercash", transferCashHandler)
-	mux.HandleFunc("/getcurrentcash", getCurrentCashHandler)
+	mux.HandleFunc("/update-cash", updateCashHandler)
+	mux.HandleFunc("/transfer-cash", transferCashHandler)
+	mux.HandleFunc("/get-current-cash", getCurrentCashHandler)
 
 	return mux
 }
