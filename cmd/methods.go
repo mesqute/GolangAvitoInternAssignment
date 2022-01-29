@@ -1,20 +1,24 @@
 package main
 
-type updateCashRequest struct {
+type UpdateCashRequest struct {
 	UserId uint
-	Value  int
+	Value  float32
 }
 
-type giver struct {
-	UserId uint
-}
-
-type receiver struct {
+type Giver struct {
 	UserId uint
 }
 
-type transferCashRequest struct {
-	giver
-	receiver
-	Value int
+type Receiver struct {
+	UserId uint
+}
+
+type TransferCashRequest struct {
+	Giver
+	Receiver
+	Value float32
+}
+
+type Validate interface {
+	Validate()
 }
